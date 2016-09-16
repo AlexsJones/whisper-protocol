@@ -2,7 +2,7 @@
  *     File Name           :     /home/jonesax/Work/whisper-protocol/src/protocol/wpmux.c
  *     Created By          :     jonesax
  *     Creation Date       :     [2016-06-01 17:45]
- *     Last Modified       :     [2016-06-09 21:56]
+ *     Last Modified       :     [2016-09-16 12:25]
  *     Description         :      
  **********************************************************************************/
 
@@ -14,7 +14,7 @@
 wp_mux *wpprotocol_mux_create(jnx_char *port, jnx_uint8 family,
     wpprotocol_emit_message_hook hook, void *optional_emit_args) {
   wp_mux *mux = malloc(sizeof(wp_mux));
-  mux->listener = jnx_socket_tcp_listener_create(port,family,100);
+  mux->listener = jnx_socket_tcp_listener_create(port,family,100,NULL);
   mux->out_queue = jnx_stack_create();
   mux->in_queue = jnx_stack_create();
   if(hook)
